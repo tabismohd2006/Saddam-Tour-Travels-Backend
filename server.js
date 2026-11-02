@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import enquiryRoutes from "./routes/enquiryRoutes.js";
 dotenv.config();
 import authRoutes from "./routes/authRoutes.js";
+import insuranceRoutes from "./routes/insuranceRoutes.js";
 
 // Connect Database
 connectDB();
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/enquiry", enquiryRoutes);
 app.use("/api/admin", authRoutes);
+app.use("/api/insurance", insuranceRoutes);
 
 // Test Route
 app.get("/", (req, res) => {
