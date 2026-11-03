@@ -1,25 +1,25 @@
+import "dotenv/config";
+
 import express from "express";
-import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
 import enquiryRoutes from "./routes/enquiryRoutes.js";
-dotenv.config();
 import authRoutes from "./routes/authRoutes.js";
 import insuranceRoutes from "./routes/insuranceRoutes.js";
+import notificationRoutes from "./routes/notificationRoutes.js";
 
-// Connect Database
 connectDB();
 
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
+
 app.use("/api/enquiry", enquiryRoutes);
 app.use("/api/admin", authRoutes);
 app.use("/api/insurance", insuranceRoutes);
+app.use("/api/notifications", notificationRoutes);
 
-// Test Route
 app.get("/", (req, res) => {
   res.send("🚀 Saddam Tour & Travels API Running...");
 });
